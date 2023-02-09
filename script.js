@@ -19,7 +19,24 @@ function divide(nbr1, nbr2 = 0){
     return nbr1 / nbr2;
 }
 
-console.log(add(1,2));
-console.log(substract(1,2));
-console.log(multiply(1,2));
-console.log(divide(1,2));
+function operate(nbr1,op,nbr2){
+    switch (op) {
+        case "+":
+            console.log(nbr1,op, nbr2);
+            return add(nbr1,nbr2);
+        case "-":
+            console.log(nbr1,op, nbr2);
+            return substract(nbr1,nbr2);
+            
+        case "*":
+            console.log(nbr1,op, nbr2);
+            return multiply(nbr1,nbr2);
+            
+        case "/":
+            console.log(nbr1,op, nbr2);
+           return divide(nbr1,nbr2);
+            
+    }
+
+}
+console.log(operate(1,"/",2));
