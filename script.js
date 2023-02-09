@@ -40,3 +40,16 @@ function operate(nbr1,op,nbr2){
 
 }
 console.log(operate(1,"/",2));
+
+const display = document.querySelector("#input");
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(button => {
+    button.addEventListener("click", addToDisplay);  
+});
+
+function addToDisplay(){
+    display.value = this.value;
+    console.log("display: "+ display.value);
+    console.log("bouton: "+ this.value);
+}
