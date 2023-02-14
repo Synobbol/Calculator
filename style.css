@@ -1,0 +1,62 @@
+body{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 2em;
+}
+button{
+    color: rgb(187, 168, 174);
+    background-color: rgb(37, 29, 29);
+    border-radius: 5px;
+}
+button:hover{
+    color: azure;
+    background-color: rgb(85, 75, 75);
+    cursor: pointer;
+}
+#display{
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
+input{
+    margin: 5px 5px 0px 5px;
+    width: 100%;
+    padding: 10px;
+    font-size: 2em;
+    border: 2px solid rgb(85, 75, 75);
+    border-radius: 5px;
+    background-color: rgb(222, 216, 216);
+}
+#buttons{
+    display:flex;
+    justify-content: space-around;
+    width: 60%;
+}
+
+#numbers{
+    width: 100%;
+    gap:5px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+.number{
+    width: 30%;
+    font-size: 2em;
+}
+
+.operator{
+    width: 30%;
+    font-size: 2em;
+}
+#clear{
+    display: flex;
+    justify-content: center;
+    margin:5px;
+}
+#clear button{
+    font-size: 1em;
+    padding: 10px;
+
+}
