@@ -1,7 +1,9 @@
+html{
+    box-sizing: border-box;
+}
 body{
     display: flex;
     justify-content: center;
-    width: 100%;
     margin: 2em;
 }
 button{
@@ -60,3 +62,7 @@ input{
     padding: 10px;
 
 }
+
+/* main{
+    background-color: black;
+} */
