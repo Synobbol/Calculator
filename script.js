@@ -48,31 +48,13 @@ function operate(nbr1,op,nbr2){
 
 }
 
-function del(arrayI){
-    let del = arrayI.list = [];
-    return del;
-}
-
-function clear(arrayI){
-   arrayI.list = [];
-   arrayI.nbr1 =[];
-   arrayI.nbr2 = [];
-   arrayI.nbr3 = [];
-   arrayI.countDot = "";
-    return arrayI;
-}
-
-function erase(arrayI){
-    arrayI = arrayI.list.pop();
-    return arrayI;
-}
-
 const display = document.querySelector("#input");
 const nbrButtons = document.querySelectorAll(".number");
 const opButtons = document.querySelectorAll(".operator");
 const clearBtn = document.querySelector(".clear");
 const eraseBtn = document.querySelector(".erase");
 const dots = document.querySelector("#dot");
+const disabled = document.createAttribute("disabled");
 
 nbrButtons.forEach(button => {
     button.addEventListener("click", addToDisplay);   
@@ -90,6 +72,8 @@ function addToDisplay() {
 
     switch (this.value){
         case "+":
+            clearDots(inputs);
+
             if(inputs.nbr1 == ""){
                 inputs.op = this.value;
                 inputs.nbr1 = inputs.list;  
@@ -103,6 +87,8 @@ function addToDisplay() {
 
             break;
         case "-":
+            clearDots(inputs);
+
             if(inputs.nbr1 == ""){
                 inputs.op = this.value;
                 inputs.nbr1 = inputs.list;  
@@ -117,25 +103,26 @@ function addToDisplay() {
 
             break;
         case "*":
+            clearDots(inputs);
+
             if(inputs.nbr1 == ""){
                 inputs.op = this.value;
                 inputs.nbr1 = inputs.list;
-                console.log("nombre1 :" + inputs.nbr1); 
             }
             else{
                 inputs.op2 = this.value;
                 inputs.nbr2 = inputs.list;
-                console.log("nombre2 :" + inputs.nbr2);
             }  
 
             del(inputs);
 
             break;
         case "/":
+            clearDots(inputs);
+
             if(inputs.nbr1 == ""){
                 inputs.op = this.value;
                 inputs.nbr1 = inputs.list;  
-                console.log(inputs.op);
             }
             else{
                 inputs.op2 = this.value;
@@ -145,29 +132,9 @@ function addToDisplay() {
             del(inputs);
 
             break;
-        case ".":
-            inputs.countDot ++ ;
-
-            if(inputs.countDot > 1){
-
-                let disabled = document.createAttribute("disabled");
-                disabled.value = "true";
-                dots.style.backgroundColor= "#ded8d8";
-                dots.setAttributeNode(disabled);
-            }
-            else{
-                inputs.list.push(this.value);
-                inputs = inputs.list.join("");
-                display.value = inputs;
-            }
-
-            break;
         case "":
             clear(inputs);
             display.value = inputs.list;
-            console.log("clearnbr1: "+ inputs.nbr1);
-            console.log("clearnbr2: "+ inputs.nbr2);
-            console.log("clearnbr3: "+ inputs.nbr3);
             
             break;
         case "erase":
@@ -206,31 +173,65 @@ function addToDisplay() {
                 
             }
             else{
-                inputs.nbr2 = inputs.list;
+                inputs.nbr2 = inputs.list;  
 
-                if(inputs.op === "/" && inputs.nbr1 == 0|| inputs.nbr2 == 0|| inputs.nbr3 == 0){
-                    let error = "Can't divide by 0...";
+                if(inputs.op === "/" && inputs.nbr1 == 0|| inputs.nbr2 == 0){
+                    let error = "Divide by 0? You monster..";
                     display.style.color = "red";
-
+                    
                     return display.value = error;
                 }
+                else{
+                    let firstNbr = inputs.nbr1.join("");
+                    let secondNbr = inputs.nbr2.join("");
+                    
+                    let calcul = operate(firstNbr, inputs.op, secondNbr);
+                    
+                    display.value = calcul;
+                    del(inputs);
+                }
 
-                let firstNbr = inputs.nbr1.join("");
-                let secondNbr = inputs.nbr2.join("");
-                
-                let calcul = operate(firstNbr, inputs.op, secondNbr);
-                
-                display.value = calcul;
-                del(inputs);
-    
             }
 
             break;
         default:
             inputs.list.push(this.value);
+            if(this.value === "."){
+                inputs.countDot ++ ;
+                if(inputs.countDot >= 1){
+                    disabled.value = "true";
+                    dots.style.backgroundColor = "#ded8d8";
+                    dots.setAttributeNode(disabled);
+                }
+            }
+
             inputs = inputs.list.join("");
             display.value = inputs;
-     
     }
 
+}
+
+function del(arrayI){
+    arrayI.list = [];
+    return arrayI;
+}
+function clearDots(arrayI){
+    arrayI.countDot = 0;
+
+    dots.style.backgroundColor = "";
+    dots.removeAttribute("disabled");
+}
+function clear(arrayI){
+   arrayI.list = [];
+   arrayI.nbr1 =[];
+   arrayI.nbr2 = [];
+   arrayI.nbr3 = [];
+   display.style.color = "";
+    clearDots(arrayI);
+    return arrayI;
+}
+
+function erase(arrayI){
+    arrayI = arrayI.list.pop();
+    return arrayI;
 }
