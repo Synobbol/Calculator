@@ -157,10 +157,12 @@ function addToDisplay() {
                 let secondNbr = inputs.nbr2.join("");
                 let thirdNbr = inputs.nbr3.join("");
                 
-                if(inputs.op === "/" && inputs.nbr1 == 0|| inputs.nbr2 == 0|| inputs.nbr3 == 0){
+                if(inputs.op === "/" && inputs.nbr1 == 0||
+                    inputs.op === "/" && inputs.nbr2 == 0||
+                    inputs.op === "/" && inputs.nbr3 == 0){
+
                     let error = "Divide by 0? You monster..";
                     display.style.color = "red";
-
                     return display.value = error;
                 }
 
@@ -175,10 +177,12 @@ function addToDisplay() {
             else{
                 inputs.nbr2 = inputs.list;  
 
-                if(inputs.op === "/" && inputs.nbr1 == 0|| inputs.nbr2 == 0){
+                if(inputs.op === "/" && inputs.nbr1 == 0||
+                    inputs.op ==="/" && inputs.nbr2 == 0){
+
                     let error = "Divide by 0? You monster..";
                     display.style.color = "red";
-                    
+                    clear(inputs);
                     return display.value = error;
                 }
                 else{
