@@ -156,14 +156,13 @@ function calculate(firstNbr, operator, secondNbr){
     let result = operate(firstNbr, operator, secondNbr);
     arrayInput.nbr1 = result;
 
-    console.log("nombre1 "+ arrayInput.nbr1);
     return result;
 
 }
 
 function del(arrayI){
     arrayI.list = [];
-    
+
     return arrayI;
 }
 

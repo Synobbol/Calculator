@@ -4,7 +4,6 @@ html{
 body{
     display: flex;
     justify-content: center;
-    margin: 2em;
 }
 button{
     color: rgb(187, 168, 174);
@@ -16,11 +15,6 @@ button:hover{
     background-color: rgb(85, 75, 75);
     cursor: pointer;
 }
-#display{
-    display: flex;
-    justify-content: center;
-    width: 60%;
-}
 input{
     margin: 5px 5px 0px 5px;
     width: 100%;
@@ -30,39 +24,55 @@ input{
     border-radius: 5px;
     background-color: rgb(222, 216, 216);
 }
+main{
+    background-color: rgb(26, 25, 25);
+    margin: 1em;
+    border-radius: 7px;
+    width:24%;
+}
+
+#display{
+    display: flex;
+    justify-content: center;
+}
+
 #buttons{
     display:flex;
-    justify-content: space-around;
-    width: 60%;
+    justify-content: center;
 }
 
 #numbers{
+    display:grid;
+    grid-template-columns: auto auto auto;
     width: 100%;
-    gap:5px;
-    display: flex;
-    flex-wrap: wrap;
     margin: 5px;
 }
-.number{
-    width: 30%;
+
+.zero{
+    grid-column: 1/span 2;
+}
+.number, .operator{
     font-size: 2em;
+    margin:2px;
+}
+.clear, .erase{
+    font-size: 1.5em;
+    margin:2px;
+}
+.clear{
+    grid-column: 2/span 2;
+}
+.first{
+    grid-column: 1;   
 }
 
-.operator{
-    width: 30%;
-    font-size: 2em;
-}
-#clear{
-    display: flex;
-    justify-content: center;
+#right{
+    display: grid;
+    grid-template-columns: 1fr;
     margin:5px;
 }
-#clear button{
-    font-size: 1em;
-    padding: 10px;
+#right button{
+    padding: 20px;
 
 }
 
-/* main{
-    background-color: black;
-} */
